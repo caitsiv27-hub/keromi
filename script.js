@@ -1,7 +1,9 @@
 const messagesDiv = document.getElementById("messages");
 const input = document.getElementById("input");
 const CONTACT_URL = "https://keromi.co.za/pages/contact";
-
+const INSTAGRAM = "https://www.instagram.com/keromispacesolutions";
+const FACEBOOK = "https://www.facebook.com/people/Keromi-Space-Solutions/61583328787115/";
+const TIKTOK = "https://www.tiktok.com/@keromispacesolutions";
 const knowledgeBase = [
 
   // 🧠 ABOUT KEROMI
@@ -9,6 +11,13 @@ const knowledgeBase = [
     patterns: ["who are you", "about", "keromi", "company"],
     answer: "Keromi Space Solutions provides high-spec modular infrastructure across South Africa and the SADC region. We don’t just sell containers — we design fully functional, turnkey environments built for modern business."
   },
+
+ {
+    patterns: ["thank you", "thanks", "thnx", "bye"],
+    answer: `Thank you for enquiring with Keromi Space Solutions! You can follow us on social media: <br><br><a href="${INSTAGRAM}" target="_blank" class="contact-link">Instagram</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="${FACEBOOK}" target="_blank" class="contact-link">Facebook</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="${TIKTOK}" target="_blank" class="contact-link">Tiktok</a>`
+  },
+
+
 
   {
     patterns: ["experience", "years", "history", "legacy"],
@@ -21,8 +30,8 @@ const knowledgeBase = [
   },
 
   {
-    patterns: ["where are you based", "location", "area"],
-    answer: "We are based in Johannesburg and serve clients across South Africa and the broader SADC region."
+    patterns: ["where are you based", "location", "area", "where are you located", "address", "what's your address"],
+    answer: "We are based in Johannesburg, our address is 623 Main Reef Road, Germiston. We serve clients across South Africa and the broader SADC region."
   },
 
   // 🏠 PARKHOMES
@@ -67,7 +76,7 @@ const knowledgeBase = [
 
   // 🚿 ABLUTION
   {
-    patterns: ["ablution", "toilet", "bathroom"],
+    patterns: ["ablution", "toilet", "toilets", "bathroom", "bathrooms"],
     answer: "Our ablution units are built for demanding environments like construction sites and mines, with plumbing, toilets, sinks, and electrical systems included."
   },
 
@@ -83,10 +92,22 @@ const knowledgeBase = [
     answer: "We offer full turnkey services including manufacturing, electrical and plumbing, interior fit-out, delivery, and site placement."
   },
 
+   // ⚙️ SIZES
+  {
+    patterns: ["sizes", "lengths", "width", "sizing", "space"],
+    answer: "3 sizes of containers:\n3m (L) x 2.4m (W) x 2.6m (H)\n6m (L) x 2.4m (W) x 2.6m (H)\n12m (L) x 2.4m (W) x 2.6m (H)."
+  },
+
+  //Greeting
+  {
+    patterns: ["Hi", "Hello", "Good day"],
+    answer: "Hi there! Welcome to Keromi Space Solutions. We are so happy to hear from you. How can we help?"
+  },
+
   // 🚚 DELIVERY
   {
-    patterns: ["delivery", "transport"],
-    answer: "We handle delivery and placement across South Africa. Costs depend on your location and unit type."
+    patterns: ["delivery", "transport", "logistics"],
+    answer: "We handle delivery and placement across South Africa. Costs depend on your location and unit type. Please contact us directly. "
   },
 
   // 💰 PRICING / SALES ENTRY
@@ -123,7 +144,7 @@ function getResponse(userInput) {
 
   if (bestMatch) return bestMatch.answer;
 
-  return "Got you 👌 just tell me what you're looking to build or use it for and I’ll guide you.";
+  return "Hi there! Welcome to Keromi Space Solutions. We are so happy to hear from you. How can we help?";
 }
 
 function addMessage(text, type) {
@@ -140,14 +161,22 @@ function handleBot(userText) {
   // 🎯 Quote / serious enquiry detection
   if (
     input.includes("quote") ||
+    input.includes("Quote") ||
     input.includes("price") ||
+    input.includes("Price") ||
+    input.includes("how much") ||
+    input.includes("How much") ||
     input.includes("cost") ||
+    input.includes("Cost") ||
+    input.includes("costing") ||
     input.includes("contact") ||
-    input.includes("speak to someone")
+    input.includes("speak to someone") ||
+    input.includes("speak") ||
+    input.includes("consultant")
   ) {
     return `I can definitely assist with that 👌  
 For detailed enquiries and quotes, please submit your requirements here:<br><br>
-<a href="${CONTACT_URL}" target="_blank" class="contact-link">Go to Contact Page</a>`;
+<a href="${CONTACT_URL}" target="_blank" class="contact-link">Contact Us</a>`;
   }
 
   // fallback to knowledge base
