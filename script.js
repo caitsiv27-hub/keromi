@@ -17,7 +17,16 @@ const knowledgeBase = [
     answer: `Thank you for enquiring with Keromi Space Solutions! You can follow us on social media: <br><br><a href="${INSTAGRAM}" target="_blank" class="contact-link">Instagram</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="${FACEBOOK}" target="_blank" class="contact-link">Facebook</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="${TIKTOK}" target="_blank" class="contact-link">Tiktok</a>`
   },
 
+{
+    patterns: ["What do you sell?", "what are your offerings?"],
+    answer: "We have a wide range of product offerings! We sell containers, container conversions, parkhomes and cement fibre housing. What are you interested in?"
+  },
 
+
+  {
+    patterns: ["I'm looking for containers", "looking for", "looking", "I need", "I want to buy","supply", "What containers do you supply?"],
+    answer: "Please specify exactly what you're looking for, is it parkhomes, guardhouses etc.?"
+  },
 
   {
     patterns: ["experience", "years", "history", "legacy"],
@@ -94,8 +103,8 @@ const knowledgeBase = [
 
    // ⚙️ SIZES
   {
-    patterns: ["sizes", "lengths", "width", "sizing", "space"],
-    answer: "3 sizes of containers:\n3m (L) x 2.4m (W) x 2.6m (H)\n6m (L) x 2.4m (W) x 2.6m (H)\n12m (L) x 2.4m (W) x 2.6m (H)."
+    patterns: ["sizes", "lengths", "width", "sizing", "space", "size of containers"],
+    answer: "3 sizes of containers:<br><br>3m (L) x 2.4m (W) x 2.6m (H)<br><br>6m (L) x 2.4m (W) x 2.6m (H)<br><br>12m (L) x 2.4m (W) x 2.6m (H)."
   },
 
   //Greeting
@@ -124,7 +133,7 @@ let chatState = {
 };
 
 function getResponse(userInput) {
-  const input = userInput.toLowerCase();
+  const input = userInput.toLowerCase(); 
 
   let bestMatch = null;
   let highestScore = 0;
@@ -181,7 +190,7 @@ For detailed enquiries and quotes, please submit your requirements here:<br><br>
 
   // fallback to knowledge base
   return getResponse(userText);
-}
+} 
 
 function sendMessage() {
   const text = input.value.trim();
